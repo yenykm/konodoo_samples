@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mymodel_report_form_view" model="ir.ui.view">
+        <field name="name">My Model view form</field>
+        <field name="model">my.model</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="get_chart_print" type="object" string="Print Pie Chart"
+                            class="oe_highlight fa fa-print"/>
+                </header>
+                <sheet name="My model">
+                    <group colspan="4">
+                        <group col="2">
+                            <field name="name"/>
+                        </group>
+                        <group col="2">
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="my_model_view_tree" model="ir.ui.view">
+        <field name="name">my_model_view_tree</field>
+        <field name="model">my.model</field>
+        <field name="arch" type="xml">
+            <tree string="My model Tree">
+                <field name="name"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="my_model_action" model="ir.actions.act_window">
+        <field name="name">My model action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">my.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="mymodel_root" name="My Model Sample" sequence="1" groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="mymodel_menu" name="My model info" parent="mymodel_root" action="my_model_action" sequence="1"/>
+</odoo>
